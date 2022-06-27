@@ -22,7 +22,7 @@ namespace ProductivityTools.Trips.Api.Db
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Trip>().ToTable("Trip", "t").HasKey("TripId");
+            modelBuilder.Entity<Trip>().ToTable("Bag", "mw").HasKey("BagID");
             base.OnModelCreating(modelBuilder);
         }
     }

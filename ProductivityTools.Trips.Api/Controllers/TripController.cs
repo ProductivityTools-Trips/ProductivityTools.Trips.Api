@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProductivityTools.Trips.Api.Db;
 
 namespace ProductivityTools.Trips.Api.Controllers
 {
@@ -7,6 +8,11 @@ namespace ProductivityTools.Trips.Api.Controllers
     [ApiController]
     public class TripController : ControllerBase
     {
+        private readonly TripContext TripContext;
+        public TripController(TripContext context)
+        {
+            this.TripContext = context;
+        }
 
         [HttpGet( "Date")]
         public string Get()
@@ -15,9 +21,10 @@ namespace ProductivityTools.Trips.Api.Controllers
         }
 
         [HttpGet("List")]
-        public string List()
+        public List<Trip> List()
         {
-            return DateTime.Now.ToString();
+            var r=TripContext.Trips.ToList();
+            return r;
         }
     }
 }

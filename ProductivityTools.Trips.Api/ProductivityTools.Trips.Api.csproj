@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ProductivityTools.MasterConfiguration" Version="2.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductivityTools.Trips.Api.Db\ProductivityTools.Trips.Api.Db.csproj" />
   </ItemGroup>
 
 </Project>
