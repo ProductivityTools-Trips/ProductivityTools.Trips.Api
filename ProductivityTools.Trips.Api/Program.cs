@@ -1,8 +1,10 @@
 using ProductivityTools.MasterConfiguration;
 using ProductivityTools.Trips.Api.Db;
 
+string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddMasterConfiguration(force:true);
+builder.Configuration.AddMasterConfiguration(force: true);
 
 // Add services to the container.
 
@@ -11,6 +13,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TripContext>();
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+                                  });
+});
 
 var app = builder.Build();
 
@@ -22,7 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();
