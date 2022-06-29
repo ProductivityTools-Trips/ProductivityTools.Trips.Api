@@ -33,5 +33,14 @@ namespace ProductivityTools.Trips.Api.Controllers
             var r = TripContext.Trips.Where(x=>x.BagID==id).Single();
             return r;
         }
+
+        [HttpPost("Save")]
+        public StatusCodeResult Save(Trip trip)
+        {
+            var r = TripContext.Trips.Where(x => x.BagID == trip.BagID).Single();
+            r.Name = trip.Name;
+            TripContext.SaveChanges();
+            return Ok();
+        }
     }
 }
