@@ -26,5 +26,12 @@ namespace ProductivityTools.Trips.Api.Controllers
             var r=TripContext.Trips.ToList();
             return r;
         }
+
+        [HttpGet("Get")]
+        public Trip Get(int id)
+        {
+            var r = TripContext.Trips.Where(x=>x.BagID==id).Single();
+            return r;
+        }
     }
 }
