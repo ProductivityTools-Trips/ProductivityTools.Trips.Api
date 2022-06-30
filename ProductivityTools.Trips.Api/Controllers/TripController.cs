@@ -42,5 +42,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             TripContext.SaveChanges();
             return Ok();
         }
+
+
     }
 }

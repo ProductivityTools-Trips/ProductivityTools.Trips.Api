@@ -13,6 +13,7 @@ namespace ProductivityTools.Trips.Api.Db
             this.Configuration = conf;
         }
         public DbSet<Trip> Trips { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,6 +24,8 @@ namespace ProductivityTools.Trips.Api.Db
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Trip>().ToTable("Bag", "mw").HasKey("BagID");
+            modelBuilder.Entity<Expense>().ToTable("Expense", "mw").HasKey("ExpenseID");
+            modelBuilder.Entity<Expense>().Property(x => x.Name).IsRequired(false);
             base.OnModelCreating(modelBuilder);
         }
     }
