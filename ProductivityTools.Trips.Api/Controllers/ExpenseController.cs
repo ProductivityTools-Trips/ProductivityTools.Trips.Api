@@ -11,13 +11,31 @@ namespace ProductivityTools.Trips.Api.Controllers
         private readonly TripContext TripContext;
         public ExpenseController(TripContext context)
         {
+
             this.TripContext = context;
         }
-        [HttpGet("Get")]
-        public List<Expense> Get(int id)
+        [HttpGet("GetList")]
+        public List<Expense> GetList(int tripId)
         {
-            var r = this.TripContext.Expenses.Where(x=>x.BagId==id).ToList();
+            var r = this.TripContext.Expenses.Where(x=>x.BagId== tripId).ToList();
             return r;
+        }
+
+        [HttpGet("Get")]
+        public Expense Get(int id)
+        {
+            var r = this.TripContext.Expenses.Where(x => x.ExpenseID == id).Single();
+            return r;
+        }
+
+
+        [HttpPost("Save")]
+        public StatusCodeResult Save(Expense expense)
+        {
+            var r = TripContext.Expenses.Where(x => x.ExpenseID == expense.ExpenseID).Single();
+            r.Name = expense.Name;
+            TripContext.SaveChanges();
+            return Ok();
         }
     }
 }
