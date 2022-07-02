@@ -29,7 +29,7 @@ pipeline {
         }
         stage('deleteDbMigratorDir') {
             steps {
-                bat('if exist "C:\\Bin\\TripsApiDdbMigration" RMDIR /Q/S "C:\\Bin\\TripsApiDdbMigration"')
+                bat('if exist "C:\\Bin\\TripsDbUp" RMDIR /Q/S "C:\\Bin\\TripsDbUp"')
             }
         }
         stage('copyDbMigratdorFiles') {
