@@ -24,7 +24,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpGet("Get")]
         public Expense Get(int id)
         {
-            var r = this.TripContext.Expenses.Where(x => x.ExpenseID == id).Single();
+            var r = this.TripContext.Expenses.Where(x => x.ExpenseId == id).Single();
             return r;
         }
 
@@ -32,7 +32,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpPost("Save")]
         public StatusCodeResult Save(Expense expense)
         {
-            var r = TripContext.Expenses.Where(x => x.ExpenseID == expense.ExpenseID).Single();
+            var r = TripContext.Expenses.Where(x => x.ExpenseId == expense.ExpenseId).Single();
             r.Name = expense.Name;
             TripContext.SaveChanges();
             return Ok();
