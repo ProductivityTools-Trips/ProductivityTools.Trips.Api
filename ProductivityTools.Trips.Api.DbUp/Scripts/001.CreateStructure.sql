@@ -38,6 +38,30 @@ CREATE TABLE [t].[Trip](
 	CONSTRAINT FK_TripCurrency_Currency FOREIGN KEY (CurrencyId) REFERENCES [t].[Currency]
 	)
 
+	CREATE TABLE [t].[Expense](
+	[ExpenseId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](40) NULL,
+	[CategoryID] [int] NULL,
+	TripId [int] NULL,
+	[Date] [datetime] NULL,
+	[TimeStamp] [timestamp] NOT NULL,
+	[CurrencyID] [int] NULL,
+	[Value] [decimal](6, 2) NULL,
+	[Free] [bit] NOT NULL,
+	[Discount] [decimal](7, 2) NOT NULL,
+	[ValueAfterDiscount]  AS ([Value]-[Discount]),
+	CONSTRAINT PK_ExpenseId PRIMARY KEY ([ExpenseId]),
+	CONSTRAINT FK_Expense_Trip FOREIGN KEY (TripId) REFERENCES [t].Trip(TripId),
+	CONSTRAINT FK_Expense_Category FOREIGN KEY (CategoryId) REFERENCES [t].Category(CategoryId),
+	CONSTRAINT FK_Expense_Currency FOREIGN KEY (CurrencyId) REFERENCES [t].Currency(CurrencyId),
+
+)
+
+ALTER TABLE t.[Expense] ADD  CONSTRAINT [def_false]  DEFAULT ((0)) FOR [Free]
+ALTER TABLE t.[Expense] ADD  DEFAULT ((0)) FOR [Discount]
+
+
+
 
 
 
