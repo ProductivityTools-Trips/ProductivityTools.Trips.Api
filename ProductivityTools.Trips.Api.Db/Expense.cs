@@ -9,7 +9,7 @@ namespace ProductivityTools.Trips.Api.Db
     public class Expense
     {
         public int ExpenseID { get; set; }
-        public int BagId { get; set; }
+        public int TripId { get; set; }
  
 
         public string Name { get; set; }

@@ -23,8 +23,8 @@ namespace ProductivityTools.Trips.Api.Db
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Trip>().ToTable("Bag", "mw").HasKey("BagID");
-            modelBuilder.Entity<Expense>().ToTable("Expense", "mw").HasKey("ExpenseID");
+            modelBuilder.Entity<Trip>().ToTable("Trip", "t").HasKey("TripId");
+            modelBuilder.Entity<Expense>().ToTable("Expense", "t").HasKey("ExpenseId");
             modelBuilder.Entity<Expense>().Property(x => x.Name).IsRequired(false);
             base.OnModelCreating(modelBuilder);
         }

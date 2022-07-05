@@ -1,19 +1,26 @@
-﻿/****** Script for SelectTopNRows command from SSMS  ******/
-with x as
-(
-SELECT  bc.[BagCurrencyID]
-      ,bc.[CurrencyID]
-      ,bc.[BagID]
-      ,bc.[Value]
-	  ,b.Name AS oldBagName
-	  ,c.Name AS oldCurrencyName
-	  ,nc.CurrencyId as newCurrencyId
-	  ,t.TripId as newTripId
-  FROM [Powershell].[mw].[BagCurrency] bc
-  INNER JOIN [Powershell].[mw].Bag b ON BC.BagID=B.BagID
-  INNER JOIN [Powershell].[mw].Currency c ON c.CurrencyID=bc.CurrencyID
-  INNER JOIN [PTTrips].[t].Currency nc ON nc.Name=c.Name COLLATE Polish_CI_AS
-  INNER JOIN [PTTrips].t.Trip	t ON t.Name=b.Name COLLATE Polish_CI_AS
+﻿with x as (
+
+SELECT [ExpenseID]
+      ,e.[Name]
+      ,[Date]
+      ,[TimeStamp]
+      ,[Value]
+      ,[Free]
+      ,[Discount]
+      ,[ValueAfterDiscount]
+	  ,cat.Name as CategoryName
+	  ,cur.Name as CurrencyName
+	  ,b.Name as BagName
+	  ,tripsCategory.CategoryId as tripsCategoryId
+	  ,tripsCurrency.CurrencyId as tripsCurrencyId
+	  ,trip.TripId as tripId
+  FROM [Powershell].[mw].[Expense] e
+  inner join mw.Category cat ON e.CategoryID=cat.CategoryID
+  inner join mw.Currency cur ON e.CurrencyID=cur.CurrencyID
+  inner join mw.Bag b ON e.BagID=b.BagID
+  inner join PTTrips.t.Category tripsCategory ON tripsCategory.Name=cat.Name COLLATE Polish_CI_AS
+  inner join PTTrips.t.Currency tripsCurrency ON tripsCurrency.Name=cur.Name COLLATE Polish_CI_AS
+  inner join PTTrips.t.Trip trip ON trip.Name=b.Name COLLATE Polish_CI_AS
   )
-  INSERT INTO PTTrips.T.TripCurrency (CurrencyId,TripId,Value)
-  SELECT newCurrencyId, newTripId,value FROM X
+  insert into PTTrips.t.Expense (Name,Date,Value,Free,Discount,CategoryId,CurrencyId,TripId) 
+  select x.Name,x.Date,x.Value,x.Free,x.Discount,x.tripsCategoryId,x.tripsCurrencyId,x.TripId from x
