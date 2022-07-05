@@ -30,14 +30,14 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpGet("Get")]
         public Trip Get(int id)
         {
-            var r = TripContext.Trips.Where(x=>x.BagID==id).Single();
+            var r = TripContext.Trips.Where(x=>x.TripId==id).Single();
             return r;
         }
 
         [HttpPost("Save")]
         public StatusCodeResult Save(Trip trip)
         {
-            var r = TripContext.Trips.Where(x => x.BagID == trip.BagID).Single();
+            var r = TripContext.Trips.Where(x => x.TripId == trip.TripId).Single();
             r.Name = trip.Name;
             TripContext.SaveChanges();
             return Ok();

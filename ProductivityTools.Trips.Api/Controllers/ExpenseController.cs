@@ -17,7 +17,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpGet("GetList")]
         public List<Expense> GetList(int tripId)
         {
-            var r = this.TripContext.Expenses.Where(x=>x.BagId== tripId).ToList();
+            var r = this.TripContext.Expenses.Where(x=>x.TripId== tripId).ToList();
             return r;
         }
 
