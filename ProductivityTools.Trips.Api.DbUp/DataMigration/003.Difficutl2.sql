@@ -17,5 +17,3 @@ SELECT  bc.[BagCurrencyID]
   )
   INSERT INTO PTTrips.T.TripCurrency (CurrencyId,TripId,Value)
   SELECT newCurrencyId, newTripId,value FROM X
-
-

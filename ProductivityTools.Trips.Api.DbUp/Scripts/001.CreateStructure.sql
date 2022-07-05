@@ -41,11 +41,11 @@ CREATE TABLE [t].[Trip](
 	CREATE TABLE [t].[Expense](
 	[ExpenseId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](40) NULL,
-	[CategoryID] [int] NULL,
+	[CategoryId] [int] NULL,
 	TripId [int] NULL,
 	[Date] [datetime] NULL,
 	[TimeStamp] [timestamp] NOT NULL,
-	[CurrencyID] [int] NULL,
+	[CurrencyId] [int] NULL,
 	[Value] [decimal](6, 2) NULL,
 	[Free] [bit] NOT NULL,
 	[Discount] [decimal](7, 2) NOT NULL,
