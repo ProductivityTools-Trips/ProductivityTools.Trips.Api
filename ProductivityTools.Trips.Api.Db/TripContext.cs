@@ -14,6 +14,7 @@ namespace ProductivityTools.Trips.Api.Db
         }
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Currency> Currency { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,8 +25,11 @@ namespace ProductivityTools.Trips.Api.Db
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Trip>().ToTable("Trip", "t").HasKey("TripId");
+
             modelBuilder.Entity<Expense>().ToTable("Expense", "t").HasKey("ExpenseId");
             modelBuilder.Entity<Expense>().Property(x => x.Name).IsRequired(false);
+
+            modelBuilder.Entity<Currency>().ToTable("Currency", "t").HasKey("CurrencyId");
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -11,9 +11,9 @@ namespace ProductivityTools.Trips.Api.Controllers
         private readonly TripContext TripContext;
         public ExpenseController(TripContext context)
         {
-
             this.TripContext = context;
         }
+
         [HttpGet("GetList")]
         public List<Expense> GetList(int tripId)
         {
