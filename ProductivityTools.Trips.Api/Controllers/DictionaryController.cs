@@ -20,5 +20,13 @@ namespace ProductivityTools.Trips.Api.Controllers
             var x = this.TripContext.Currency.ToList();
             return x;
         }
+
+
+        [HttpGet("Categories")]
+        public List<Category> Category()
+        {
+            var x = this.TripContext.Category.ToList();
+            return x;
+        }
     }
 }
