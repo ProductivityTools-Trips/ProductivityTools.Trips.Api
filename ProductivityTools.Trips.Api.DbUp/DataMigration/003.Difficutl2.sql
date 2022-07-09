@@ -15,9 +15,9 @@ SELECT [ExpenseID]
 	  ,tripsCurrency.CurrencyId as tripsCurrencyId
 	  ,trip.TripId as tripId
   FROM [Powershell].[mw].[Expense] e
-  inner join mw.Category cat ON e.CategoryID=cat.CategoryID
-  inner join mw.Currency cur ON e.CurrencyID=cur.CurrencyID
-  inner join mw.Bag b ON e.BagID=b.BagID
+  inner join [Powershell].mw.Category cat ON e.CategoryID=cat.CategoryID
+  inner join [Powershell].mw.Currency cur ON e.CurrencyID=cur.CurrencyID
+  inner join [Powershell].mw.Bag b ON e.BagID=b.BagID
   inner join PTTrips.t.Category tripsCategory ON tripsCategory.Name=cat.Name COLLATE Polish_CI_AS
   inner join PTTrips.t.Currency tripsCurrency ON tripsCurrency.Name=cur.Name COLLATE Polish_CI_AS
   inner join PTTrips.t.Trip trip ON trip.Name=b.Name COLLATE Polish_CI_AS

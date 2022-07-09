@@ -44,7 +44,7 @@ CREATE TABLE [t].[Trip](
 	[TripId] [int]  NOT NULL,
 	[CategoryId] [int] NOT NULL,
 	[CurrencyId] [int]  NOT NULL,
-	[Date] [datetime] NULL,
+	[Date] [date] NULL,
 	[TimeStamp] [timestamp] NOT NULL,
 	[Value] [decimal](6, 2) NULL,
 	[Free] [bit] NOT NULL,
