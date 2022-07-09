@@ -17,7 +17,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpGet("GetList")]
         public List<Expense> GetList(int tripId)
         {
-            var r = this.TripContext.Expenses.Where(x=>x.TripId== tripId).ToList();
+            var r = this.TripContext.Expenses.Where(x => x.TripId == tripId).ToList();
             return r;
         }
 
@@ -34,6 +34,14 @@ namespace ProductivityTools.Trips.Api.Controllers
         {
             var r = TripContext.Expenses.Where(x => x.ExpenseId == expense.ExpenseId).Single();
             r.Name = expense.Name;
+            TripContext.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost("Add")]
+        public StatusCodeResult Add(Expense expense)
+        {
+            TripContext.Expenses.Add(expense);
             TripContext.SaveChanges();
             return Ok();
         }
