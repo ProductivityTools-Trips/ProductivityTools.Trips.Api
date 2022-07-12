@@ -21,6 +21,13 @@ namespace ProductivityTools.Trips.Api.Controllers
             return r;
         }
 
+        [HttpGet("GetFullView")]
+        public List<ExpenseFullView> GetFullView(int tripId)
+        {
+            var r = this.TripContext.ExpensesFullView.Where(x => x.TripId == tripId).ToList();
+            return r;
+        }
+
         [HttpGet("Get")]
         public Expense Get(int id)
         {

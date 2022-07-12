@@ -9,11 +9,11 @@
 
   <ItemGroup>
     <None Remove="Scripts\001.CreateStructure.sql" />
-    <None Remove="Scripts\002.ExpenseFullView1.sql" />
+    <None Remove="Scripts\002.ExpenseFullView4.sql" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Scripts\002.ExpenseFullView1.sql" />
+    <EmbeddedResource Include="Scripts\002.ExpenseFullView4.sql" />
     <EmbeddedResource Include="Scripts\001.CreateStructure.sql" />
   </ItemGroup>
 

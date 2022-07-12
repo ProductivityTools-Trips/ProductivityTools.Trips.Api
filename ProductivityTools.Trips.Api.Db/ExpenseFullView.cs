@@ -20,6 +20,10 @@ namespace ProductivityTools.Trips.Api.Db
         public decimal Value { get; set; }
         public decimal Discount { get; set; }
         public decimal ValueAfterDiscount { get; set; }
+        public Nullable<decimal> Exchange { get; set; }
+        public decimal Pln { get; set; }
+
+        public decimal PlnAfterDiscount { get; set; }
         public decimal DayInPln { get; set; }
     }
 }
