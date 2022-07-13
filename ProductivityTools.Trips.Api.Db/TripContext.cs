@@ -13,6 +13,8 @@ namespace ProductivityTools.Trips.Api.Db
             this.Configuration = conf;
         }
         public DbSet<Trip> Trips { get; set; }
+
+        public DbSet<TripFullView> TripFullView { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ExpenseFullView> ExpensesFullView { get; set; }
         public DbSet<Currency> Currency { get; set; }
@@ -31,8 +33,13 @@ namespace ProductivityTools.Trips.Api.Db
             modelBuilder.Entity<Trip>().Property("Days").HasColumnName("DayCount");
             modelBuilder.Entity<Trip>().Property("Start").HasColumnName("DateStart");
             modelBuilder.Entity<Trip>().Property("End").HasColumnName("DateEnd");
-            modelBuilder.Entity<Trip>().Ignore("Expensed");
-            modelBuilder.Entity<Trip>().Ignore("Cost");
+
+            modelBuilder.Entity<TripFullView>().ToView("TripFullView", "t").HasKey("TripId");
+            modelBuilder.Entity<TripFullView>().Property("Days").HasColumnName("DayCount");
+            modelBuilder.Entity<TripFullView>().Property("Start").HasColumnName("DateStart");
+            modelBuilder.Entity<TripFullView>().Property("End").HasColumnName("DateEnd");
+            modelBuilder.Entity<TripFullView>().Property("Expensed").HasColumnName("Expensed");
+            modelBuilder.Entity<TripFullView>().Property("Cost").HasColumnName("Cost");
 
             modelBuilder.Entity<Expense>().ToTable("Expense", "t").HasKey("ExpenseId");
             modelBuilder.Entity<Expense>().Property(x => x.Name).IsRequired(false);

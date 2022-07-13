@@ -14,7 +14,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             this.TripContext = context;
         }
 
-        [HttpGet( "Date")]
+        [HttpGet("Date")]
         public string Get()
         {
             return DateTime.Now.ToString();
@@ -23,14 +23,21 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpGet("List")]
         public List<Trip> List()
         {
-            var r=TripContext.Trips.ToList();
+            var r = TripContext.Trips.ToList();
+            return r;
+        }
+
+        [HttpGet("FullView")]
+        public List<TripFullView> FullView()
+        {
+            var r = TripContext.TripFullView.ToList();
             return r;
         }
 
         [HttpGet("Get")]
         public Trip Get(int id)
         {
-            var r = TripContext.Trips.Where(x=>x.TripId==id).Single();
+            var r = TripContext.Trips.Where(x => x.TripId == id).Single();
             return r;
         }
 
