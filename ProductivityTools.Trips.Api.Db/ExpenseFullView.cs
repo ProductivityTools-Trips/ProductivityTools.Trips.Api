@@ -11,7 +11,7 @@ namespace ProductivityTools.Trips.Api.Db
         public int TripId { get; set; }
         public string TripName { get; set; }
         public int ExpenseId { get; set; }
-        public string ExpenseName { get; set; }
+        public string? ExpenseName { get; set; }
         public DateTime Date{get;set;}
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }

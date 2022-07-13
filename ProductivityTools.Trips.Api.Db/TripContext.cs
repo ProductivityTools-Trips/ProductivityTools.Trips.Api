@@ -28,6 +28,11 @@ namespace ProductivityTools.Trips.Api.Db
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Trip>().ToTable("Trip", "t").HasKey("TripId");
+            modelBuilder.Entity<Trip>().Property("Days").HasColumnName("DayCount");
+            modelBuilder.Entity<Trip>().Property("Start").HasColumnName("DateStart");
+            modelBuilder.Entity<Trip>().Property("End").HasColumnName("DateEnd");
+            modelBuilder.Entity<Trip>().Ignore("Expensed");
+            modelBuilder.Entity<Trip>().Ignore("Cost");
 
             modelBuilder.Entity<Expense>().ToTable("Expense", "t").HasKey("ExpenseId");
             modelBuilder.Entity<Expense>().Property(x => x.Name).IsRequired(false);
