@@ -11,9 +11,11 @@
     <None Remove="Scripts\001.CreateStructure.sql" />
     <None Remove="Scripts\002.ExpenseFullView4.sql" />
     <None Remove="Scripts\003.TripFullView.sql" />
+    <None Remove="Scripts\004.TripFullViewLeft.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\004.TripFullViewLeft.sql" />
     <EmbeddedResource Include="Scripts\003.TripFullView.sql" />
     <EmbeddedResource Include="Scripts\002.ExpenseFullView4.sql" />
     <EmbeddedResource Include="Scripts\001.CreateStructure.sql" />

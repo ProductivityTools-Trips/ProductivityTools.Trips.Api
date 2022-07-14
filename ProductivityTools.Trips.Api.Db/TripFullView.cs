@@ -15,8 +15,8 @@ namespace ProductivityTools.Trips.Api.Db
         public int? Nights { get; set; }
         public DateTime? Start { get; set; }
         public DateTime? End { get; set; }
-        public decimal Cost { get; set; }
-        public decimal Expensed { get; set; }
+        public decimal? Cost { get; set; }
+        public decimal? Expensed { get; set; }
         public string? Description { get; set; }
     }
 }

@@ -41,6 +41,15 @@ namespace ProductivityTools.Trips.Api.Controllers
             return r;
         }
 
+
+        [HttpPost("Add")]
+        public StatusCodeResult Add(Trip trip)
+        {
+            TripContext.Trips.Add(trip);
+            TripContext.SaveChanges();
+            return Ok();
+        }
+
         [HttpPost("Save")]
         public StatusCodeResult Save(Trip trip)
         {
