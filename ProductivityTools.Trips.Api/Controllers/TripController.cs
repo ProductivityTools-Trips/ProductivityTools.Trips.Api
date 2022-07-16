@@ -30,7 +30,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         [HttpGet("FullView")]
         public List<TripFullView> FullView()
         {
-            var r = TripContext.TripFullView.ToList();
+            var r = TripContext.TripFullView.OrderByDescending(x=>x.Start).ToList();
             return r;
         }
 
