@@ -12,9 +12,11 @@
     <None Remove="Scripts\002.ExpenseFullView4.sql" />
     <None Remove="Scripts\003.TripFullView.sql" />
     <None Remove="Scripts\004.TripFullViewLeft.sql" />
+    <None Remove="Scripts\005.TripCurrencyFullView.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\005.TripCurrencyFullView.sql" />
     <EmbeddedResource Include="Scripts\004.TripFullViewLeft.sql" />
     <EmbeddedResource Include="Scripts\003.TripFullView.sql" />
     <EmbeddedResource Include="Scripts\002.ExpenseFullView4.sql" />

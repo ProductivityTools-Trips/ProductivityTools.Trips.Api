@@ -18,8 +18,9 @@ namespace ProductivityTools.Trips.Api.Db
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ExpenseFullView> ExpensesFullView { get; set; }
         public DbSet<Currency> Currency { get; set; }
-
         public DbSet<Category> Category { get; set; }
+        public DbSet<TripCurrencyFullView> TripCurrencyFullView { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -48,6 +49,9 @@ namespace ProductivityTools.Trips.Api.Db
             modelBuilder.Entity<Category>().ToTable("Category", "t").HasKey("CategoryId");
 
             modelBuilder.Entity<ExpenseFullView>().ToView("ExpenseFullView", "t").HasKey("ExpenseId");
+
+            modelBuilder.Entity<TripCurrencyFullView>().ToView("TripCurrencyFullView", "t").HasKey("TripCurrencyId");
+
 
             base.OnModelCreating(modelBuilder);
         }
