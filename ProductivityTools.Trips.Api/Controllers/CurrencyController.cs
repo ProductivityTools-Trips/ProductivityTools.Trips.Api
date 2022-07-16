@@ -21,5 +21,12 @@ namespace ProductivityTools.Trips.Api.Controllers
             var x = this.TripContext.TripCurrencyFullView.Where(x => x.TripId == tripId).ToList();
             return x;
         }
+
+        [HttpPost("AddCurrency")]
+        public void AddCurrency(TripCurrency tripCurrency)
+        {
+            this.TripContext.TripCurrencies.Add(tripCurrency);
+            this.TripContext.SaveChanges();
+        }
     }
 }
