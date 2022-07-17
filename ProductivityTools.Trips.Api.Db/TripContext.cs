@@ -3,10 +3,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace ProductivityTools.Trips.Api.Db
 {
-    public class TripContext :DbContext
+    public class TripContext : DbContext
     {
 
-        private readonly IConfiguration Configuration; 
+        private readonly IConfiguration Configuration;
 
         public TripContext(IConfiguration conf)
         {
@@ -21,6 +21,7 @@ namespace ProductivityTools.Trips.Api.Db
         public DbSet<Category> Category { get; set; }
         public DbSet<TripCurrency> TripCurrencies { get; set; }
         public DbSet<TripCurrencyFullView> TripCurrencyFullView { get; set; }
+        public DbSet<Journal> Journals { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -55,6 +56,7 @@ namespace ProductivityTools.Trips.Api.Db
 
             modelBuilder.Entity<TripCurrencyFullView>().ToView("TripCurrencyFullView", "t").HasKey("TripCurrencyId");
 
+            modelBuilder.Entity<Journal>().ToTable("Journal", "t").HasKey("JournalId");
 
             base.OnModelCreating(modelBuilder);
         }
