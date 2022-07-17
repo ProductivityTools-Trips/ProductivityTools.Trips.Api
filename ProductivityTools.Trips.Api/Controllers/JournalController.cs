@@ -22,7 +22,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             return x;
         }
 
-        [HttpPost("Add")]
+        [HttpPost("Add1")]
         public void Add(Journal journal)
         {
             this.TripContext.Journals.Add(journal);
