@@ -22,10 +22,19 @@ namespace ProductivityTools.Trips.Api.Controllers
             return x;
         }
 
-        [HttpPost("Add1")]
-        public void Add(Journal journal)
+        [HttpPost("Add")]
+        public int Add(Journal journal)
         {
             this.TripContext.Journals.Add(journal);
+            this.TripContext.SaveChanges();
+            return journal.JournalId;
+        }
+
+        [HttpPost("Update")]
+        public void Update(Journal journal)
+        {
+            var j=this.TripContext.Journals.Single(x => x.JournalId == journal.JournalId);
+            j.Notes = journal.Notes;
             this.TripContext.SaveChanges();
         }
     }
