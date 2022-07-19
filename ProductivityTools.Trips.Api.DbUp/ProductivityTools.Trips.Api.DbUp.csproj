@@ -14,9 +14,11 @@
     <None Remove="Scripts\004.TripFullViewLeft.sql" />
     <None Remove="Scripts\005.TripCurrencyFullView.sql" />
     <None Remove="Scripts\006.Journal.sql" />
+    <None Remove="Scripts\007.JournalDate.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\007.JournalDate.sql" />
     <EmbeddedResource Include="Scripts\006.Journal.sql" />
     <EmbeddedResource Include="Scripts\005.TripCurrencyFullView.sql" />
     <EmbeddedResource Include="Scripts\004.TripFullViewLeft.sql" />

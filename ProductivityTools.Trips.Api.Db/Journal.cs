@@ -10,6 +10,7 @@ namespace ProductivityTools.Trips.Api.Db
     {
         public int JournalId { get; set; }
         public int TripId { get; set; }
+        public DateTime Date { get; set; }
         public string? Notes { get; set; }
     }
 }
