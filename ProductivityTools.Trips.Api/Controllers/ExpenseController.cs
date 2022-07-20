@@ -52,5 +52,14 @@ namespace ProductivityTools.Trips.Api.Controllers
             TripContext.SaveChanges();
             return Ok();
         }
+
+        [HttpDelete("Delete")]
+        public StatusCodeResult Delete(int expenseId)
+        {
+            var e=TripContext.Expenses.Single(x => x.ExpenseId == expenseId);
+            TripContext.Remove(e);
+            TripContext.SaveChanges();
+            return Ok();
+        }
     }
 }
