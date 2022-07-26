@@ -41,6 +41,11 @@ namespace ProductivityTools.Trips.Api.Controllers
         {
             var r = TripContext.Expenses.Where(x => x.ExpenseId == expense.ExpenseId).Single();
             r.Name = expense.Name;
+            r.Value = expense.Value;
+            r.Discount = expense.Discount;
+            r.CurrencyId= expense.CurrencyId;
+            r.CategoryId= expense.CategoryId;
+            r.Date= expense.Date;
             TripContext.SaveChanges();
             return Ok();
         }
