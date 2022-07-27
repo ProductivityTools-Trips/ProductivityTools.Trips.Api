@@ -18,9 +18,11 @@
     <None Remove="Scripts\008.Expensed.sql" />
     <None Remove="Scripts\009.ExpensedinPln.sql" />
     <None Remove="Scripts\010.ExpensesExpenced.sql" />
+    <None Remove="Scripts\011.DayFullView.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\011.DayFullView.sql" />
     <EmbeddedResource Include="Scripts\010.ExpensesExpenced.sql" />
     <EmbeddedResource Include="Scripts\009.ExpensedinPln.sql" />
     <EmbeddedResource Include="Scripts\008.Expensed.sql" />
