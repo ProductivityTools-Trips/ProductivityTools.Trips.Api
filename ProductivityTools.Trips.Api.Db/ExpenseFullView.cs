@@ -18,12 +18,11 @@ namespace ProductivityTools.Trips.Api.Db
         public int CurrencyId { get; set; }
         public string CurrencyName { get; set; }
         public decimal Value { get; set; }
-        public decimal Discount { get; set; }
-        public decimal ValueAfterDiscount { get; set; }
+        public decimal Expensed { get; set; }
+        public decimal ValuePln { get; set; }
+        public decimal ExpensedInPln { get; set; }
         public Nullable<decimal> Exchange { get; set; }
-        public decimal Pln { get; set; }
-
-        public decimal PlnAfterDiscount { get; set; }
-        public decimal DayInPln { get; set; }
+        public decimal DayValueInPln { get; set; }
+        public decimal DayExpensedInPln { get; set; }
     }
 }
