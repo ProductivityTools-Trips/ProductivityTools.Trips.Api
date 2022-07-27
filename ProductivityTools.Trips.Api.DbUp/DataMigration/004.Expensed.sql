@@ -1,0 +1,1 @@
+﻿  update [t].[Expense]  set Expensed=ValueAfterDiscount

@@ -16,9 +16,13 @@
     <None Remove="Scripts\006.Journal.sql" />
     <None Remove="Scripts\007.JournalDate.sql" />
     <None Remove="Scripts\008.Expensed.sql" />
+    <None Remove="Scripts\009.ExpensedinPln.sql" />
+    <None Remove="Scripts\010.ExpensesExpenced.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\010.ExpensesExpenced.sql" />
+    <EmbeddedResource Include="Scripts\009.ExpensedinPln.sql" />
     <EmbeddedResource Include="Scripts\008.Expensed.sql" />
     <EmbeddedResource Include="Scripts\007.JournalDate.sql" />
     <EmbeddedResource Include="Scripts\006.Journal.sql" />
