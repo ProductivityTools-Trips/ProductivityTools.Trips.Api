@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -15,9 +15,11 @@
     <None Remove="Scripts\005.TripCurrencyFullView.sql" />
     <None Remove="Scripts\006.Journal.sql" />
     <None Remove="Scripts\007.JournalDate.sql" />
+    <None Remove="Scripts\008.Expensed.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\008.Expensed.sql" />
     <EmbeddedResource Include="Scripts\007.JournalDate.sql" />
     <EmbeddedResource Include="Scripts\006.Journal.sql" />
     <EmbeddedResource Include="Scripts\005.TripCurrencyFullView.sql" />
