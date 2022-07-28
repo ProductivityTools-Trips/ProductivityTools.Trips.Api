@@ -35,14 +35,13 @@ namespace ProductivityTools.Trips.Api.Controllers
             return r;
         }
 
-
         [HttpPost("Save")]
         public StatusCodeResult Save(Expense expense)
         {
             var r = TripContext.Expenses.Where(x => x.ExpenseId == expense.ExpenseId).Single();
             r.Name = expense.Name;
             r.Value = expense.Value;
-            r.Discount = expense.Discount;
+            r.Expensed = expense.Expensed;
             r.CurrencyId= expense.CurrencyId;
             r.CategoryId= expense.CategoryId;
             r.Date= expense.Date;

@@ -15,6 +15,6 @@ namespace ProductivityTools.Trips.Api.Db
         public int CategoryId { get; set; }
         public DateTime Date { get; set; }
         public decimal Value { get; set; }
-        public decimal Discount { get; set; }
+        public decimal Expensed { get; set; }
     }
 }
