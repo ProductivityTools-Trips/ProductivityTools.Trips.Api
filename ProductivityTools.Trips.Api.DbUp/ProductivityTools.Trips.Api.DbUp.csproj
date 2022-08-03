@@ -19,9 +19,11 @@
     <None Remove="Scripts\009.ExpensedinPln.sql" />
     <None Remove="Scripts\010.ExpensesExpenced.sql" />
     <None Remove="Scripts\011.DayFullView.sql" />
+    <None Remove="Scripts\012.ColumnDeprecation.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\012.ColumnDeprecation.sql" />
     <EmbeddedResource Include="Scripts\011.DayFullView.sql" />
     <EmbeddedResource Include="Scripts\010.ExpensesExpenced.sql" />
     <EmbeddedResource Include="Scripts\009.ExpensedinPln.sql" />
