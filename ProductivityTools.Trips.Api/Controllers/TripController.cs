@@ -55,6 +55,11 @@ namespace ProductivityTools.Trips.Api.Controllers
         {
             var r = TripContext.Trips.Where(x => x.TripId == trip.TripId).Single();
             r.Name = trip.Name;
+            r.Start= trip.Start;
+            r.End= trip.End;
+            r.Description= trip.Description;
+            r.Days= trip.Days;
+            r.Nights=trip.Nights;
             TripContext.SaveChanges();
             return Ok();
         }
