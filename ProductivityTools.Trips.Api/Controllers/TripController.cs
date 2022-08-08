@@ -60,6 +60,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             r.Description= trip.Description;
             r.Days= trip.Days;
             r.Nights=trip.Nights;
+            r.Learnings = trip.Learnings;
             TripContext.SaveChanges();
             return Ok();
         }
