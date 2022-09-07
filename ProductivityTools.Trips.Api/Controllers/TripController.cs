@@ -40,7 +40,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             var r = TripContext.Trips.Where(x => x.TripId == id).Single();
             return r;
         }
-
+        
 
         [HttpPost("Add")]
         public StatusCodeResult Add(Trip trip)

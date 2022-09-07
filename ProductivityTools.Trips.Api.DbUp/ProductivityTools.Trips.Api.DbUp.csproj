@@ -20,9 +20,11 @@
     <None Remove="Scripts\010.ExpensesExpenced.sql" />
     <None Remove="Scripts\011.DayFullView.sql" />
     <None Remove="Scripts\012.ColumnDeprecation.sql" />
+    <None Remove="Scripts\013.RemoveDoubledData.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\013.RemoveDoubledData.sql" />
     <EmbeddedResource Include="Scripts\012.ColumnDeprecation.sql" />
     <EmbeddedResource Include="Scripts\011.DayFullView.sql" />
     <EmbeddedResource Include="Scripts\010.ExpensesExpenced.sql" />
