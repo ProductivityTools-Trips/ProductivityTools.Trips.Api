@@ -22,6 +22,13 @@ namespace ProductivityTools.Trips.Api.Controllers
             return x;
         }
 
+        [HttpGet("Get")]
+        public Journal Get(int journalId)
+        {
+            var x = this.TripContext.Journals.Where(x => x.JournalId == journalId).Single();
+            return x;
+        }
+
         [HttpPost("Add")]
         public int Add(Journal journal)
         {
