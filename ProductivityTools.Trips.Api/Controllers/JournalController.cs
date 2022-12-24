@@ -42,6 +42,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         {
             var j=this.TripContext.Journals.Single(x => x.JournalId == journal.JournalId);
             j.Notes = journal.Notes;
+            j.Date = journal.Date;
             this.TripContext.SaveChanges();
         }
     }
