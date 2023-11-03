@@ -46,28 +46,28 @@ pipeline {
 
         stage('stopMeetingsOnIis') {
             steps {
-                bat('%windir%\\system32\\inetsrv\\appcmd stop site /site.name:Trips')
+                bat('%windir%\\system32\\inetsrv\\appcmd stop site /site.name:PTTrips')
             }
         }
 
         stage('deleteIisDir') {
             steps {
                 retry(5) {
-                    bat('if exist "C:\\Bin\\TripsApi" RMDIR /Q/S "C:\\Bin\\TripsApi"')
+                    bat('if exist "C:\\Bin\\IIS\\TripsApi" RMDIR /Q/S "C:\\Bin\\IIS\\TripsApi"')
                 }
 
             }
         }
         stage('copyIisFiles') {
             steps {
-                bat('xcopy "c:\\Program Files (x86)\\Jenkins\\workspace\\Trips.Api\\ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\TripsApi\\" /O /X /E /H /K')
+                bat('xcopy "c:\\Program Files (x86)\\Jenkins\\workspace\\Trips.Api\\ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\IIS\\TripsApi\\" /O /X /E /H /K')
 				                      
             }
         }
 
         stage('startMeetingsOnIis') {
             steps {
-                bat('%windir%\\system32\\inetsrv\\appcmd start site /site.name:Trips')
+                bat('%windir%\\system32\\inetsrv\\appcmd start site /site.name:PTTrips')
             }
         }
         stage('byebye') {
