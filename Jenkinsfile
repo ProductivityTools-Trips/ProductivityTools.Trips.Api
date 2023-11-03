@@ -34,7 +34,7 @@ pipeline {
         }
         stage('copyDbMigratdorFiles') {
             steps {
-                bat('xcopy "c:\\Program Files (x86)\\Jenkins\\workspace\\Trips.Api\\ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net6.0\\publish" "C:\\Bin\\TripsDbUp\\" /O /X /E /H /K')
+                bat('xcopy "Trips.Api\\ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net6.0\\publish" "C:\\Bin\\TripsDbUp\\" /O /X /E /H /K')
             }
         }
 
@@ -60,7 +60,7 @@ pipeline {
         }
         stage('copyIisFiles') {
             steps {
-                bat('xcopy "c:\\Program Files (x86)\\Jenkins\\workspace\\Trips.Api\\ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\IIS\\TripsApi\\" /O /X /E /H /K')
+                bat('xcopy "Trips.Api\\ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\IIS\\TripsApi\\" /O /X /E /H /K')
 				                      
             }
         }
