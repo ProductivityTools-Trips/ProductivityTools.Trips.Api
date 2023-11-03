@@ -20,6 +20,13 @@ namespace ProductivityTools.Trips.Api.Controllers
             return DateTime.Now.ToString();
         }
 
+        [HttpGet]
+        [Route("echo")]
+        public string echo(string name)
+        {
+            return $"Welcome request performed at {DateTime.Now} with param {name} on server {System.Environment.MachineName} to Application Trips";
+        }
+
         [HttpGet("List")]
         public List<Trip> List()
         {
