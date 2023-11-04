@@ -53,14 +53,14 @@ pipeline {
         stage('deleteIisDir') {
             steps {
                 retry(5) {
-                    bat('if exist "C:\\Bin\\IIS\\TripsApi" RMDIR /Q/S "C:\\Bin\\IIS\\TripsApi"')
+                    bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
                 }
 
             }
         }
         stage('copyIisFiles') {
             steps {
-                bat('xcopy "ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\IIS\\TripsApi\\" /O /X /E /H /K')
+                bat('xcopy "ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\IIS\\PTTrips\\" /O /X /E /H /K')
 				                      
             }
         }
