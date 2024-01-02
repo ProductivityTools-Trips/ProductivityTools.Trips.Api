@@ -45,6 +45,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             r.CurrencyId= expense.CurrencyId;
             r.CategoryId= expense.CategoryId;
             r.Date= expense.Date;
+            r.FamilyCost = expense.FamilyCost;
             TripContext.SaveChanges();
             return Ok();
         }

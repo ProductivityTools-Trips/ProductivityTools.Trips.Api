@@ -24,5 +24,7 @@ namespace ProductivityTools.Trips.Api.Db
         public Nullable<decimal> Exchange { get; set; }
         public decimal DayValueInPln { get; set; }
         public decimal DayExpensedInPln { get; set; }
+
+        public decimal FamilyCost { get; set; }
     }
 }

@@ -16,5 +16,7 @@ namespace ProductivityTools.Trips.Api.Db
         public DateTime Date { get; set; }
         public decimal Value { get; set; }
         public decimal Expensed { get; set; }
+
+        public decimal FamilyCost { get; set; }
     }
 }

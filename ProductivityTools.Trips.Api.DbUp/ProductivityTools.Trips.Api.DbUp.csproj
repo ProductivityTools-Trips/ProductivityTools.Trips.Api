@@ -24,9 +24,11 @@
     <None Remove="Scripts\014.ConvertDateTimeToDate.sql" />
     <None Remove="Scripts\015.FamilyCost.sql" />
     <None Remove="Scripts\016.FamilyCost.sql" />
+    <None Remove="Scripts\017.ExpensesExpencedFamilyCost.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\017.ExpensesExpencedFamilyCost.sql" />
     <EmbeddedResource Include="Scripts\016.FamilyCost.sql" />
     <EmbeddedResource Include="Scripts\015.FamilyCost.sql" />
     <EmbeddedResource Include="Scripts\014.ConvertDateTimeToDate.sql" />
