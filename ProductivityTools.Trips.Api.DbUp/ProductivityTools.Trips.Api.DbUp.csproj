@@ -22,9 +22,13 @@
     <None Remove="Scripts\012.ColumnDeprecation.sql" />
     <None Remove="Scripts\013.RemoveDoubledData.sql" />
     <None Remove="Scripts\014.ConvertDateTimeToDate.sql" />
+    <None Remove="Scripts\015.FamilyCost.sql" />
+    <None Remove="Scripts\016.FamilyCost.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\016.FamilyCost.sql" />
+    <EmbeddedResource Include="Scripts\015.FamilyCost.sql" />
     <EmbeddedResource Include="Scripts\014.ConvertDateTimeToDate.sql" />
     <EmbeddedResource Include="Scripts\013.RemoveDoubledData.sql" />
     <EmbeddedResource Include="Scripts\012.ColumnDeprecation.sql" />
