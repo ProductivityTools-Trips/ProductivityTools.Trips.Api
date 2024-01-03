@@ -26,5 +26,6 @@ namespace ProductivityTools.Trips.Api.Db
         public decimal DayExpensedInPln { get; set; }
 
         public decimal FamilyCost { get; set; }
+        public decimal? FriendsDebit { get; set; }
     }
 }

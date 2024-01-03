@@ -23,13 +23,17 @@
     <None Remove="Scripts\013.RemoveDoubledData.sql" />
     <None Remove="Scripts\014.ConvertDateTimeToDate.sql" />
     <None Remove="Scripts\015.FamilyCost.sql" />
-    <None Remove="Scripts\016.FamilyCost.sql" />
+    <None Remove="Scripts\016 - Copy.FamilyCost.sql" />
     <None Remove="Scripts\017.ExpensesExpencedFamilyCost.sql" />
+    <None Remove="Scripts\018.FriendsDebit.sql" />
+    <None Remove="Scripts\019.FriendsDebitExpenses.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\016 - Copy.FamilyCost.sql" />
+    <EmbeddedResource Include="Scripts\019.FriendsDebitExpenses.sql" />
     <EmbeddedResource Include="Scripts\017.ExpensesExpencedFamilyCost.sql" />
-    <EmbeddedResource Include="Scripts\016.FamilyCost.sql" />
+    <EmbeddedResource Include="Scripts\018.FriendsDebit.sql" />
     <EmbeddedResource Include="Scripts\015.FamilyCost.sql" />
     <EmbeddedResource Include="Scripts\014.ConvertDateTimeToDate.sql" />
     <EmbeddedResource Include="Scripts\013.RemoveDoubledData.sql" />

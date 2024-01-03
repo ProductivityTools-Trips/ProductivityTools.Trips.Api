@@ -46,6 +46,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             r.CategoryId= expense.CategoryId;
             r.Date= expense.Date;
             r.FamilyCost = expense.FamilyCost;
+            r.FriendsDebit = expense.FriendsDebit;
             TripContext.SaveChanges();
             return Ok();
         }
