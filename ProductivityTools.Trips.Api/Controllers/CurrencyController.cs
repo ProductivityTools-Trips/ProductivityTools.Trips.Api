@@ -28,5 +28,14 @@ namespace ProductivityTools.Trips.Api.Controllers
             this.TripContext.TripCurrencies.Add(tripCurrency);
             this.TripContext.SaveChanges();
         }
+
+        [HttpGet("DeleteTripCurrency")]
+        public IActionResult DeleteTripCurrency(int tripCurrencyId)
+        {
+            var x = this.TripContext.TripCurrencies.Single(x => x.TripCurrencyId == tripCurrencyId);
+            this.TripContext.Remove(x);
+            this.TripContext.SaveChanges();
+            return Ok();
+        }
     }
 }
