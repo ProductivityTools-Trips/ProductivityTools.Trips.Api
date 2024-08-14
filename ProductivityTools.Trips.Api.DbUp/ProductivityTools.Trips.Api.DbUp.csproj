@@ -28,9 +28,11 @@
     <None Remove="Scripts\018.FriendsDebit.sql" />
     <None Remove="Scripts\019.FriendsDebitExpenses.sql" />
     <None Remove="Scripts\020.FamilyCostInPln.sql" />
+    <None Remove="Scripts\021.Thousadds.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\021.Thousadds.sql" />
     <EmbeddedResource Include="Scripts\016.FamilyCost.sql" />
     <EmbeddedResource Include="Scripts\020.FamilyCostInPln.sql" />
     <EmbeddedResource Include="Scripts\019.FriendsDebitExpenses.sql" />
