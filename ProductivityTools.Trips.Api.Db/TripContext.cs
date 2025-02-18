@@ -30,6 +30,7 @@ namespace ProductivityTools.Trips.Api.Db
             optionsBuilder.UseSqlServer(connectionString);
         }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Trip>().ToTable("Trip", "t").HasKey("TripId");
