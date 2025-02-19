@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProductivityTools.Trips.Api.Db;
 
@@ -27,6 +28,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             return $"Welcome request performed at {DateTime.Now} with param {name} on server {System.Environment.MachineName} to Application Trips";
         }
 
+        [Authorize]
         [HttpGet("List")]
         public List<Trip> List()
         {
@@ -34,6 +36,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             return r;
         }
 
+        [Authorize]
         [HttpGet("FullView")]
         public List<TripFullView> FullView()
         {

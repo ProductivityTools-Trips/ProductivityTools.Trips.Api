@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductivityTools.Trips.Api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductivityTools.Trips.Api.Db", "ProductivityTools.Trips.Api.Db\ProductivityTools.Trips.Api.Db.csproj", "{26EAAF81-2212-4BD6-BA3C-83460E2EE1F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTools.Trips.Api.DbUp", "ProductivityTools.Trips.Api.DbUp\ProductivityTools.Trips.Api.DbUp.csproj", "{AC8B21E2-9CF8-4E83-8474-9B1C3D10F1F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductivityTools.Trips.Api.DbUp", "ProductivityTools.Trips.Api.DbUp\ProductivityTools.Trips.Api.DbUp.csproj", "{AC8B21E2-9CF8-4E83-8474-9B1C3D10F1F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
