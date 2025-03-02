@@ -35,8 +35,8 @@ namespace ProductivityTools.Trips.Api.Controllers
             var r = TripContext.Trips.ToList();
             return r;
         }
-
         [Authorize]
+        [AuthenticatedUsers]
         [HttpGet("FullView")]
         public List<TripFullView> FullView()
         {
