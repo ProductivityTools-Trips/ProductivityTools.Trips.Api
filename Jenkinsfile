@@ -29,18 +29,18 @@ pipeline {
         }
         stage('deleteDbMigratorDir') {
             steps {
-                bat('if exist "C:\\Bin\\TripsDbUp" RMDIR /Q/S "C:\\Bin\\TripsDbUp"')
+                bat('if exist "C:\\Bin\\DbMigration\\PTTrips.Api" RMDIR /Q/S "C:\\Bin\\DbMigration\\PTTrips.Api"')
             }
         }
         stage('copyDbMigratdorFiles') {
             steps {
-                bat('xcopy "ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net6.0\\publish" "C:\\Bin\\TripsDbUp\\" /O /X /E /H /K')
+                bat('xcopy "ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net6.0\\publish" "C:\\Bin\\DbMigration\\PTTrips.Api" /O /X /E /H /K')
             }
         }
 
         stage('runDbMigratorFiles') {
             steps {
-                bat('C:\\Bin\\TripsDbUp\\ProductivityTools.Trips.Api.DbUp.exe')
+                bat('C:\\Bin\\DbMigration\\PTTrips.Api\\ProductivityTools.Trips.Api.DbUp.exe')
             }
         }
 
