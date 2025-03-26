@@ -34,7 +34,7 @@ pipeline {
         }
         stage('copyDbMigratdorFiles') {
             steps {
-                bat('xcopy "ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net6.0\\publish" "C:\\Bin\\DbMigration\\PTTrips.Api\\" /O /X /E /H /K')
+                bat('xcopy "ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net9.0\\publish" "C:\\Bin\\DbMigration\\PTTrips.Api\\" /O /X /E /H /K')
             }
         }
 
@@ -86,7 +86,7 @@ pipeline {
         }
         stage('copyIisFiles') {
             steps {
-                bat('xcopy "ProductivityTools.Trips.Api\\bin\\Release\\net6.0\\publish" "C:\\Bin\\IIS\\PTTrips\\" /O /X /E /H /K')
+                bat('xcopy "ProductivityTools.Trips.Api\\bin\\Release\\net9.0\\publish" "C:\\Bin\\IIS\\PTTrips\\" /O /X /E /H /K')
 				                      
             }
         }
