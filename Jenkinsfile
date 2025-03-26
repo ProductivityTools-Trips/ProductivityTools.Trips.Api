@@ -65,6 +65,10 @@ pipeline {
                         .\\appcmd.exe add apppool /name:$Name /managedRuntimeVersion:"v4.0" /managedPipelineMode:"Integrated"
                         write-host "Creating webage"
                         .\\appcmd.exe add site /name:$Name /bindings:http://$HttpbBnding /physicalpath:$PhysicalPath
+                        write-host "assign app pool to the website"
+                        .\\appcmd.exe set app "prova/DefaultAppPool" /applicationPool:"$Name"
+
+
                     }
                 }
                 Create "PTTrips" "*:8002"  "C:\\Bin\\IIS\\PTTrips\\"                
