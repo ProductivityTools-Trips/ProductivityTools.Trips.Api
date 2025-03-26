@@ -61,6 +61,8 @@ pipeline {
                     }
                     else
                     {
+                        write-host "Creating app pool"
+                        .\\appcmd.exe add apppool /name:$Name /managedRuntimeVersion:"v4.0" /managedPipelineMode:"Integrated"
                         write-host "Creating webage"
                         .\\appcmd.exe add site /name:$Name /bindings:http://$HttpbBnding /physicalpath:$PhysicalPath
                     }
