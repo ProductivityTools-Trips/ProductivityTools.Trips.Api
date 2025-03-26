@@ -44,6 +44,32 @@ pipeline {
             }
         }
 
+        stage('create iis page') {
+            steps {
+                powershell('''
+                function CheckIfExist($Name){
+                    cd $env:SystemRoot\\system32\\inetsrv
+                    $exists = (.\\appcmd.exe list sites /name:$Name) -ne $null
+                    Write-Host $exists
+                    return  $exists
+                }
+                
+                function Create($Name,$HttpbBnding,$PhysicalPath){
+                    $exists=CheckIfExist $Name
+                    if ($exists){
+                        write-host "Web page already existing"
+                    }
+                    else
+                    {
+                        write-host "Creating webage"
+                        .\\appcmd.exe add site /name:$Name /bindings:http://$HttpbBnding /physicalpath:$PhysicalPath
+                    }
+                }
+                Create "PTTrips" "*:8002"  "C:\\Bin\\IIS\\PTTrips\\"                
+                ''')
+            }
+        }
+
         stage('stopMeetingsOnIis') {
             steps {
                 bat('%windir%\\system32\\inetsrv\\appcmd stop site /site.name:PTTrips')
