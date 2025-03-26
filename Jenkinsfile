@@ -66,7 +66,7 @@ pipeline {
                         write-host "Creating webage"
                         .\\appcmd.exe add site /name:$Name /bindings:http://$HttpbBnding /physicalpath:$PhysicalPath
                         write-host "assign app pool to the website"
-                        .\\appcmd.exe set app "prova/DefaultAppPool" /applicationPool:"$Name"
+                        .\\appcmd.exe set app "$Name/DefaultAppPool" /applicationPool:"$Name"
 
 
                     }
