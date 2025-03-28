@@ -107,7 +107,7 @@ pipeline {
             steps {
                 powershell('''
 				If(-not(Get-InstalledModule SQLServer -ErrorAction silentlycontinue)){
-					Install-Module SQLServer -Confirm:$False -Force
+					Install-Module SQLServer -Confirm:$False -Force -AllowClobber 
 				}
 
 				Add-SqlLogin -ServerInstance ".\\sql2022" -LoginName "IIS APPPOOL\\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
