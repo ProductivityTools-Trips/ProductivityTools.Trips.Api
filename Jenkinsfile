@@ -110,7 +110,7 @@ pipeline {
 					Install-Module SQLServer -Confirm:$False -Force
 				}
 
-				Add-SqlLogin -ServerInstance ".\sql2022" -LoginName "IIS APPPOOL\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
+				Add-SqlLogin -ServerInstance ".\\sql2022" -LoginName "IIS APPPOOL\\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
                 ''')
             }
         }
