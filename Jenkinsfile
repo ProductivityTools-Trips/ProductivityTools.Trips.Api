@@ -102,6 +102,19 @@ pipeline {
                 bat('%windir%\\system32\\inetsrv\\appcmd start site /site.name:PTTrips')
             }
         }
+		
+		 stage('addSqlLogin') {
+            steps {
+                powershell('''
+				If(-not(Get-InstalledModule SQLServer -ErrorAction silentlycontinue)){
+					Install-Module SQLServer -Confirm:$False -Force
+				}
+
+				Add-SqlLogin -ServerInstance ".\sql2022" -LoginName "IIS APPPOOL\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
+                ''')
+            }
+        }
+		
         stage('byebye') {
             steps {
                 // Get some code from a GitHub repository
