@@ -109,7 +109,7 @@ pipeline {
 				If(-not(Get-InstalledModule SQLServer -ErrorAction silentlycontinue)){
 					Install-Module SQLServer -Confirm:$False -Force -AllowClobber 
 				}
-                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;
+                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
                 Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query
                 ''')
             }
