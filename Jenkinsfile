@@ -106,10 +106,8 @@ pipeline {
 		 stage('addSqlLogin') {
             steps {
                 powershell('''
-				If(-not(Get-InstalledModule SQLServer -ErrorAction silentlycontinue)){
-					Install-Module SQLServer -Confirm:$False -Force -AllowClobber 
-				}
-                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
+			
+                $query="CREATE LOGIN "IIS APPPOOL\\PTTrips" FROM WINDOWS;"
                 Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query
                 ''')
             }
@@ -119,7 +117,9 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 //				#Add-SqlLogin -ServerInstance ".\\sql2022" -LoginName "IIS APPPOOL\\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
-
+                //	If(-not(Get-InstalledModule SQLServer -ErrorAction silentlycontinue)){
+				//	Install-Module SQLServer -Confirm:$False -Force -AllowClobber 
+				//}
                 echo 'byebye1'
             }
         }
