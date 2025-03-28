@@ -109,8 +109,8 @@ pipeline {
 				If(-not(Get-InstalledModule SQLServer -ErrorAction silentlycontinue)){
 					Install-Module SQLServer -Confirm:$False -Force -AllowClobber 
 				}
-
-				Add-SqlLogin -ServerInstance ".\\sql2022" -LoginName "IIS APPPOOL\\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
+                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;
+                Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query
                 ''')
             }
         }
@@ -118,6 +118,8 @@ pipeline {
         stage('byebye') {
             steps {
                 // Get some code from a GitHub repository
+                //				#Add-SqlLogin -ServerInstance ".\\sql2022" -LoginName "IIS APPPOOL\\PTTrips" -LoginType "WindowsUser" -DefaultDatabase "PTTrips"
+
                 echo 'byebye1'
             }
         }
