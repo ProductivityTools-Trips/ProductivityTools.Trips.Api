@@ -103,9 +103,19 @@ pipeline {
             }
         }
 
-         stage('sqllogin2') {
+        //  stage('sqllogin2') {
+        //     steps {
+        //         bat('powershell -ExecutionPolicy Unrestricted -File your_script.ps1 --settings_skipverification=true')
+        //     }
+        // }
+
+         stage('addSqlLogin') {
             steps {
-                bat('powershell -ExecutionPolicy Unrestricted -File your_script.ps1 --settings_skipverification=true')
+                powershell('''
+			
+                $arg = "-file your_script.ps1"
+                start-process powershell -verb runas –argumentlist $arg
+                ''')
             }
         }
 		
