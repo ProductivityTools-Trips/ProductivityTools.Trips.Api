@@ -102,16 +102,22 @@ pipeline {
                 bat('%windir%\\system32\\inetsrv\\appcmd start site /site.name:PTTrips')
             }
         }
-		
-		 stage('addSqlLogin') {
+
+         stage('sqllogin2') {
             steps {
-                powershell('''
-			
-                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
-                Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
-                ''')
+                bat('powershell -ExecutionPolicy Unrestricted -File your_script.ps1 --settings_skipverification=true')
             }
         }
+		
+		//  stage('addSqlLogin') {
+        //     steps {
+        //         powershell('''
+			
+        //         $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
+        //         Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
+        //         ''')
+        //     }
+        // }
 		
         stage('byebye') {
             steps {
