@@ -123,12 +123,12 @@ pipeline {
         //         ''')
         //     }
         // }
-        
-        // stage('sqllogin2') {
-        //      steps {
-        //          bat('sqlcmd -s ".\\SQL2022" -q "CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"')
-        //      }
-        //  }
+
+        stage('sqllogin2') {
+             steps {
+                 bat('sqlcmd -s ".\\SQL2022" -q "CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"')
+             }
+         }
 		
 		//  stage('addSqlLogin') {
         //     steps {
@@ -138,7 +138,7 @@ pipeline {
         //         Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
         //         ''')
         //     }
-        }
+        //}
 		
         stage('byebye') {
             steps {
