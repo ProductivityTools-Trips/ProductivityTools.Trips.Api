@@ -108,11 +108,11 @@ pipeline {
         //         bat('powershell -ExecutionPolicy Unrestricted -File your_script.ps1 --settings_skipverification=true')
         //     }
         // }
-        stage('sqllogin2') {
-             steps {
-                 bat('bat.bat')
-             }
-         }
+        // stage('sqllogin2') {
+        //      steps {
+        //          bat('bat.bat')
+        //      }
+        //  }
 
         //  stage('addSqlLogin') {
         //     steps {
@@ -124,15 +124,15 @@ pipeline {
         //     }
         // }
 		
-		//  stage('addSqlLogin') {
-        //     steps {
-        //         powershell('''
+		 stage('addSqlLogin') {
+            steps {
+                powershell('''
 			
-        //         $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
-        //         Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
-        //         ''')
-        //     }
-        // }
+                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
+                Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
+                ''')
+            }
+        }
 		
         stage('byebye') {
             steps {
