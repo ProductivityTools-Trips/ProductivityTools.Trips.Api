@@ -123,15 +123,20 @@ pipeline {
         //         ''')
         //     }
         // }
+        stage('sqllogin2') {
+             steps {
+                 bat('sqlcmd -s ".\\SQL2022" -q "CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"')
+             }
+         }
 		
-		 stage('addSqlLogin') {
-            steps {
-                powershell('''
+		//  stage('addSqlLogin') {
+        //     steps {
+        //         powershell('''
 			
-                $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
-                Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
-                ''')
-            }
+        //         $query="CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"
+        //         Invoke-Sqlcmd -ServerInstance ".\\sql2022" -Query $query -TrustServerCertificate
+        //         ''')
+        //     }
         }
 		
         stage('byebye') {
