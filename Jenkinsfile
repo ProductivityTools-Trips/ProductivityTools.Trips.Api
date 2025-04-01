@@ -124,6 +124,11 @@ pipeline {
         //     }
         // }
 
+        stage ('user'){
+            steps{
+                bat('whoami')
+            }
+        }
         stage('sqllogin2') {
              steps {
                  bat('sqlcmd -S ".\\SQL2022" -q "CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"')
