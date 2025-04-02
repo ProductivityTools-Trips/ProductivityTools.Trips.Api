@@ -24,10 +24,10 @@ namespace ProductivityTools.Trips.Api.Controllers
         }
 
         [HttpGet]
-        [Route("Date2")]
-        public string Date2()
+        [Route("Name")]
+        public string Name()
         {
-            return DateTime.Now.ToString();
+            return "Pawel Wujczyk";
         }
 
         [HttpPost]
