@@ -23,6 +23,13 @@ namespace ProductivityTools.Trips.Api.Controllers
             return DateTime.Now.ToString();
         }
 
+        [HttpGet]
+        [Route("Date2")]
+        public string Date2()
+        {
+            return DateTime.Now.ToString();
+        }
+
         [HttpPost]
         [Route("Hello")]
         public string Hello(object s)
