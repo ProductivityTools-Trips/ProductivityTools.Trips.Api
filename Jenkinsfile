@@ -84,14 +84,11 @@ pipeline {
 
         stage('deleteIisDir2') {
             steps {
-                waitUntil {
-                    try {
-                        bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
-                    } catch(error) {
-                        input "Retry the job ?"
-                        false
-                    }
-                }
+              powershell('''
+                while($true) { if ( (Remove-Item "C:\\Bin\\IIS\\PTTrips" -Recurse *>&1) -ne $null)
+                 { Start-Sleep 0.5 }
+                  else { break } }
+              ''')
 
             }
         }
