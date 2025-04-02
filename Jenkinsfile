@@ -82,7 +82,7 @@ pipeline {
             }
         }
 
-        stage('deleteIisDir') {
+        stage('deleteIisDir2') {
             steps {
                 waitUntil {
                     try {
@@ -92,7 +92,13 @@ pipeline {
                     false
                 }
             }
-   }
+
+            }
+        }
+
+        stage('deleteIisDir') {
+            steps {
+                
                 retry(5) {
                     bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
                 }
