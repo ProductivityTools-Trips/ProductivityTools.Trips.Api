@@ -88,10 +88,10 @@ pipeline {
                     try {
                         bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
                     } catch(error) {
-                    input "Retry the job ?"
-                    false
+                        input "Retry the job ?"
+                        false
+                    }
                 }
-            }
 
             }
         }
