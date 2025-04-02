@@ -84,6 +84,15 @@ pipeline {
 
         stage('deleteIisDir') {
             steps {
+                waitUntil {
+                    try {
+                        bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
+                    } catch(error) {
+                    input "Retry the job ?"
+                    false
+                }
+            }
+   }
                 retry(5) {
                     bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
                 }
