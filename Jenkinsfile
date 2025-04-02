@@ -85,9 +85,13 @@ pipeline {
         stage('deleteIisDir2') {
             steps {
               powershell('''
-                while($true) { if ( (Remove-Item "C:\\Bin\\IIS\\PTTrips" -Recurse *>&1) -ne $null)
-                 { Start-Sleep 0.5 }
+                if ( Test-Path "C:\\Bin\\IIS\\PTTrips")
+                {
+                while($true) {
+                     if ( (Remove-Item "C:\\Bin\\IIS\\PTTrips" -Recurse *>&1) -ne $null)
+                 {  }
                   else { break } }
+                  }
               ''')
 
             }
