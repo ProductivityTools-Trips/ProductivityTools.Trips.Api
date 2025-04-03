@@ -87,10 +87,16 @@ pipeline {
               powershell('''
                 if ( Test-Path "C:\\Bin\\IIS\\PTTrips")
                 {
-                while($true) {
-                     if ( (Remove-Item "C:\\Bin\\IIS\\PTTrips" -Recurse *>&1) -ne $null)
-                 {  }
-                  else { break } }
+                    while($true) {
+                        if ( (Remove-Item "C:\\Bin\\IIS\\PTTrips" -Recurse *>&1) -ne $null)
+                        {  
+                            write-output "removing faild we should wait"
+                        }
+                        else 
+                        {
+                            break 
+                        } 
+                    }
                   }
               ''')
 

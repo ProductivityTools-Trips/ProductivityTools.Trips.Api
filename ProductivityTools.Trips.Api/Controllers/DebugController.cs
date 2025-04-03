@@ -6,7 +6,7 @@ namespace ProductivityTools.Trips.Api.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DebugController : Controller
     {
         private readonly TripContext TripContext;
@@ -24,10 +24,10 @@ namespace ProductivityTools.Trips.Api.Controllers
         }
 
         [HttpGet]
-        [Route("Name")]
-        public string Name()
+        [Route("AppName")]
+        public string AppName()
         {
-            return "Pawel Wujczyk";
+            return "PTTrips";
         }
 
         [HttpPost]
