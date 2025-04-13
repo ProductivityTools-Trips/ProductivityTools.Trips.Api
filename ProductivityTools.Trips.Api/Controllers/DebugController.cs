@@ -30,11 +30,11 @@ namespace ProductivityTools.Trips.Api.Controllers
             return "PTTrips";
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("Hello")]
-        public string Hello(object s)
+        public string Hello(string name)
         {
-            return string.Concat($"Hello {s.ToString()} Current date:{DateTime.Now}");
+            return string.Concat($"Hello {name.ToString()} Current date:{DateTime.Now}");
         }
 
         [HttpGet]
