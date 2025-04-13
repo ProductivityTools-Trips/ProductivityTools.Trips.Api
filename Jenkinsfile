@@ -22,29 +22,29 @@ pipeline {
                 url: 'https://github.com/ProductivityTools-Trips/ProductivityTools.Trips.Api.git'
             }
         }
-        stage('build') {
+        stage('Build PTTrips') {
             steps {
                 bat(script: "dotnet publish ProductivityTools.Trips.Api.sln -c Release ", returnStdout: true)
             }
         }
-        stage('deleteDbMigratorDir') {
+        stage('Delete DB Migration directory') {
             steps {
                 bat('if exist "C:\\Bin\\DbMigration\\PTTrips.Api" RMDIR /Q/S "C:\\Bin\\DbMigration\\PTTrips.Api"')
             }
         }
-        stage('copyDbMigratdorFiles') {
+        stage('Copy DB Migration Files') {
             steps {
                 bat('xcopy "ProductivityTools.Trips.Api.DbUp\\bin\\Release\\net9.0\\publish" "C:\\Bin\\DbMigration\\PTTrips.Api\\" /O /X /E /H /K')
             }
         }
 
-        stage('runDbMigratorFiles') {
+        stage('Run DB Migration files') {
             steps {
                 bat('C:\\Bin\\DbMigration\\PTTrips.Api\\ProductivityTools.Trips.Api.DbUp.exe')
             }
         }
 
-        stage('create iis page') {
+        stage('Create PTTrips IIS Page') {
             steps {
                 powershell('''
                 function CheckIfExist($Name){
@@ -76,13 +76,13 @@ pipeline {
             }
         }
 
-        stage('stopMeetingsOnIis') {
+        stage('Stop PTTrips on IIS') {
             steps {
                 bat('%windir%\\system32\\inetsrv\\appcmd stop site /site.name:PTTrips')
             }
         }
 
-        stage('deleteIisDir2') {
+        stage('Delete PTTrips IIS directory') {
             steps {
               powershell('''
                 if ( Test-Path "C:\\Bin\\IIS\\PTTrips")
@@ -103,34 +103,34 @@ pipeline {
             }
         }
 
-        stage('deleteIisDir') {
-            steps {
+        // stage('deleteIisDir') {
+        //     steps {
                 
-                retry(5) {
-                    bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
-                }
+        //         retry(5) {
+        //             bat('if exist "C:\\Bin\\IIS\\PTTrips" RMDIR /Q/S "C:\\Bin\\IIS\\PTTrips"')
+        //         }
 
-            }
-        }
-        stage('copyIisFiles') {
+        //     }
+        // }
+        stage('Copy PTTrips Data') {
             steps {
                 bat('xcopy "ProductivityTools.Trips.Api\\bin\\Release\\net9.0\\publish" "C:\\Bin\\IIS\\PTTrips\\" /O /X /E /H /K')
 				                      
             }
         }
 
-        stage('startMeetingsOnIis') {
+        stage('Start PT Trips site on IIS') {
             steps {
                 bat('%windir%\\system32\\inetsrv\\appcmd start site /site.name:PTTrips')
             }
         }
 
-        stage ('user'){
+        stage ('Get User'){
             steps{
                 bat('whoami')
             }
         }
-        stage('sqllogin2') {
+        stage('Create Login PTTrips on SQL2022') {
              steps {
                  bat('sqlcmd -S ".\\SQL2022" -q "CREATE LOGIN [IIS APPPOOL\\PTTrips] FROM WINDOWS;"')
              }
