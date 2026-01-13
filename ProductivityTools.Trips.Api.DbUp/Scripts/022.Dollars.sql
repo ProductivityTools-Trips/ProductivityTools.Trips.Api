@@ -1,0 +1,1 @@
+﻿INSERT INTO [t].[Currency] (Name) VALUES ('USD');
