@@ -24,13 +24,13 @@ builder.Services.AddAuthentication(options =>
 }).AddJwtBearer(options =>
 {
     //options.Authority = "https://identityserver.productivitytools.tech:8010";
-    options.Authority = "https://securetoken.google.com/pttripsprod";
+    options.Authority = "https://securetoken.google.com/ptprojectsweb";
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
-        ValidIssuer = "https://securetoken.google.com/pttripsprod",
+        ValidIssuer = "https://securetoken.google.com/ptprojectsweb",
         ValidateAudience = true,
-        ValidAudience = "pttripsprod",
+        ValidAudience = "ptprojectsweb",
         ValidateLifetime = true
     };
 });
@@ -40,7 +40,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:3000", "https://tripsweb.z13.web.core.windows.net", "https://ptservicestatus-309299231472.us-central1.run.app").AllowAnyHeader().AllowAnyMethod();
+                                      builder.WithOrigins("http://localhost:3000", "https://tripsweb.z13.web.core.windows.net", "https://ptservicestatus-309299231472.us-central1.run.app", "https://pt-trips.web.app", "https://trips.productivitytools.top").AllowAnyHeader().AllowAnyMethod();
                                   });
 });
 
