@@ -1,0 +1,124 @@
+name: Build and Deploy PTTrips
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    # This workflow requires a self-hosted Windows runner because it deploys to local IIS and SQL Server.
+    runs-on: [self-hosted, windows]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          clean: true # Equivalent to Jenkins 'deleteWorkspace' and 'clone'
+
+      # Jenkins 'Build PTTrips'
+      - name: Build PTTrips
+        run: dotnet publish ProductivityTools.Trips.Api.sln -c Release
+        shell: cmd
+
+      # Jenkins 'Delete DB Migration directory'
+      - name: Delete DB Migration directory
+        run: |
+          if exist "C:\Bin\DbMigration\PTTrips.Api" RMDIR /Q/S "C:\Bin\DbMigration\PTTrips.Api"
+        shell: cmd
+
+      # Jenkins 'Copy DB Migration Files'
+      - name: Copy DB Migration Files
+        run: |
+          xcopy "ProductivityTools.Trips.Api.DbUp\bin\Release\net9.0\publish" "C:\Bin\DbMigration\PTTrips.Api\" /O /X /E /H /K
+        shell: cmd
+
+      # Jenkins 'Run DB Migration files'
+      - name: Run DB Migration files
+        run: |
+          C:\Bin\DbMigration\PTTrips.Api\ProductivityTools.Trips.Api.DbUp.exe
+        shell: cmd
+
+      # Jenkins 'Create PTTrips IIS Page'
+      - name: Create PTTrips IIS Page
+        run: |
+          function CheckIfExist($Name){
+              cd $env:SystemRoot\system32\inetsrv
+              $exists = (.\appcmd.exe list sites /name:$Name) -ne $null
+              Write-Host $exists
+              return  $exists
+          }
+          
+          function Create($Name,$HttpbBnding,$PhysicalPath){
+              $exists=CheckIfExist $Name
+              if ($exists){
+                  write-host "Web page already existing"
+              }
+              else
+              {
+                  cd $env:SystemRoot\system32\inetsrv
+                  write-host "Creating app pool"
+                  .\appcmd.exe add apppool /name:$Name /managedRuntimeVersion:"v4.0" /managedPipelineMode:"Integrated"
+                  write-host "Creating webage"
+                  .\appcmd.exe add site /name:$Name /bindings:http://$HttpbBnding /physicalpath:$PhysicalPath
+                  write-host "assign app pool to the website"
+                  .\appcmd.exe set app "$Name/" /applicationPool:"$Name"
+              }
+          }
+          Create "PTTrips" "*:8002" "C:\Bin\IIS\PTTrips\"
+        shell: powershell
+
+      # Jenkins 'Stop PTTrips on IIS'
+      - name: Stop PTTrips on IIS
+        run: |
+          %windir%\system32\inetsrv\appcmd stop site /site.name:PTTrips
+        shell: cmd
+
+      # Jenkins 'Delete PTTrips IIS directory'
+      - name: Delete PTTrips IIS directory
+        run: |
+          if ( Test-Path "C:\Bin\IIS\PTTrips")
+          {
+              while($true) {
+                  if ( (Remove-Item "C:\Bin\IIS\PTTrips" -Recurse *>&1) -ne $null)
+                  {  
+                      write-output "removing failed we should wait"
+                      Start-Sleep -Seconds 1
+                  }
+                  else 
+                  {
+                      break 
+                  } 
+              }
+          }
+        shell: powershell
+
+      # Jenkins 'Copy PTTrips Data'
+      - name: Copy PTTrips Data
+        run: |
+          xcopy "ProductivityTools.Trips.Api\bin\Release\net9.0\publish" "C:\Bin\IIS\PTTrips\" /O /X /E /H /K
+        shell: cmd
+
+      # Jenkins 'Start PT Trips site on IIS'
+      - name: Start PT Trips site on IIS
+        run: |
+          %windir%\system32\inetsrv\appcmd start site /site.name:PTTrips
+        shell: cmd
+
+      # Jenkins 'Get User'
+      - name: Get User
+        run: whoami
+        shell: cmd
+
+      # Jenkins 'Create Login PTTrips on SQL2022'
+      - name: Create Login PTTrips on SQL2022
+        run: |
+          sqlcmd -S ".\SQL2022" -q "CREATE LOGIN [IIS APPPOOL\PTTrips] FROM WINDOWS;"
+        shell: cmd
+
+      # Jenkins 'byebye'
+      - name: byebye
+        run: echo "byebye1"
+        shell: cmd
