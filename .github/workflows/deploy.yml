@@ -32,8 +32,13 @@ jobs:
       # Jenkins 'Copy DB Migration Files'
       - name: Copy DB Migration Files
         run: |
-          xcopy "ProductivityTools.Trips.Api.DbUp\bin\Release\net9.0\publish" "C:\Bin\DbMigration\PTTrips.Api\" /O /X /E /H /K
-        shell: cmd
+          $source = "ProductivityTools.Trips.Api.DbUp\bin\Release\net9.0\publish"
+          $destination = "C:\Bin\DbMigration\PTTrips.Api"
+          if (!(Test-Path $destination)) {
+              New-Item -ItemType Directory -Force -Path $destination
+          }
+          Copy-Item -Path "$source\*" -Destination $destination -Recurse -Force
+        shell: powershell
 
       # Jenkins 'Run DB Migration files'
       - name: Run DB Migration files
@@ -98,8 +103,13 @@ jobs:
       # Jenkins 'Copy PTTrips Data'
       - name: Copy PTTrips Data
         run: |
-          xcopy "ProductivityTools.Trips.Api\bin\Release\net9.0\publish" "C:\Bin\IIS\PTTrips\" /O /X /E /H /K
-        shell: cmd
+          $source = "ProductivityTools.Trips.Api\bin\Release\net9.0\publish"
+          $destination = "C:\Bin\IIS\PTTrips"
+          if (!(Test-Path $destination)) {
+              New-Item -ItemType Directory -Force -Path $destination
+          }
+          Copy-Item -Path "$source\*" -Destination $destination -Recurse -Force
+        shell: powershell
 
       # Jenkins 'Start PT Trips site on IIS'
       - name: Start PT Trips site on IIS
