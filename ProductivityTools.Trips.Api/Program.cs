@@ -40,7 +40,14 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:3000", "https://tripsweb.z13.web.core.windows.net", "https://ptservicestatus-309299231472.us-central1.run.app", "https://pt-trips.web.app", "https://trips.productivitytools.top").AllowAnyHeader().AllowAnyMethod();
+                                      builder.WithOrigins(
+                                        "http://localhost:3000", 
+                                        "https://pt-service-status-93484780890.us-central1.run.app",
+                                        "https://service-status.productivitytools.top",
+                                        "https://tripsweb.z13.web.core.windows.net", 
+                                        "https://ptservicestatus-309299231472.us-central1.run.app", 
+                                        "https://pt-trips.web.app", 
+                                        "https://trips.productivitytools.top").AllowAnyHeader().AllowAnyMethod();
                                   });
 });
 
