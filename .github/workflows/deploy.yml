@@ -75,6 +75,14 @@ jobs:
           Create "PTTrips" "*:8002" "C:\Bin\IIS\PTTrips\"
         shell: powershell
 
+    - name: Open Firewall Port 8002
+      shell: powershell
+      run: |
+        if (!(Get-NetFirewallRule -DisplayName "PTTrips 8002" -ErrorAction SilentlyContinue)) {
+            New-NetFirewallRule -DisplayName "PTTrips 8002" -Direction Inbound -LocalPort 8002 -Protocol TCP -Action Allow
+        }
+
+
       # Jenkins 'Stop PTTrips on IIS'
       - name: Stop PTTrips on IIS
         run: |
