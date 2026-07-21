@@ -84,10 +84,15 @@ jobs:
 
 
       # Jenkins 'Stop PTTrips on IIS'
-      - name: Stop PTTrips on IIS
+      - name: Stop IIS site
         run: |
           %windir%\system32\inetsrv\appcmd stop site /site.name:PTTrips
         shell: cmd
+
+      - name: Stop IIS App Pool
+        shell: cmd
+        run: "%windir%\\system32\\inetsrv\\appcmd stop apppool /apppool.name:PTTrips"
+        continue-on-error: true
 
       # Jenkins 'Delete PTTrips IIS directory'
       - name: Delete PTTrips IIS directory
@@ -119,11 +124,13 @@ jobs:
           Copy-Item -Path "$source\*" -Destination $destination -Recurse -Force
         shell: powershell
 
-      # Jenkins 'Start PT Trips site on IIS'
-      - name: Start PT Trips site on IIS
-        run: |
-          %windir%\system32\inetsrv\appcmd start site /site.name:PTTrips
+      - name: Start IIS App Pool
         shell: cmd
+        run: "%windir%\\system32\\inetsrv\\appcmd start apppool /apppool.name:PTTrips"
+
+      - name: Start IIS Site
+        shell: cmd
+        run: "%windir%\\system32\\inetsrv\\appcmd start site /site.name:PTTrips"
 
       # Jenkins 'Get User'
       - name: Get User
