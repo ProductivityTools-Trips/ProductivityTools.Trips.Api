@@ -144,6 +144,6 @@ jobs:
         shell: cmd
 
       # Jenkins 'byebye'
-      - name: byebye
+      - name: byebyee
         run: echo "byebye1"
         shell: cmd
