@@ -18,3 +18,13 @@ Invoke-WebRequest -Uri 'https://apitrips.productivitytools.tech:8070/api/Trip/Da
 ```
 
 http://trips-api.productivitytools.top/WeatherForecast
+
+
+
+## Debug
+
+```
+export PATH=$HOME/.dotnet:$PATH MasterConfigurationPath=$HOME/MasterConfiguration
+~/bin/cloud-sql-proxy --port 1433 pwujczyk-pt:us-central1:pttrips-dev &
+dotnet run --project ProductivityTools.Trips.Api --urls http://localhost:5085
+```
