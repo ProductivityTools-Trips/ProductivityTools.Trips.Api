@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\024.CategorySeed.sql" />
     <EmbeddedResource Include="Scripts\023.CurrencySeed.sql" />
     <EmbeddedResource Include="Scripts\022.Dollars.sql" />
     <EmbeddedResource Include="Scripts\021.Thousadds.sql" />
