@@ -18,5 +18,6 @@ namespace ProductivityTools.Trips.Api.Db
         public decimal? Cost { get; set; }
         public decimal? Expensed { get; set; }
         public string? Description { get; set; }
+        public string? TripType { get; set; }
     }
 }

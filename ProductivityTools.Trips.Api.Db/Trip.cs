@@ -16,5 +16,7 @@ namespace ProductivityTools.Trips.Api.Db
         public DateTime? End { get; set; }
         public string? Description { get; set; }
         public string? Learnings { get; set; }
+        /// <summary>Family | Friends | Company (see TripTypes).</summary>
+        public string TripType { get; set; } = TripTypes.Family;
     }
 }
