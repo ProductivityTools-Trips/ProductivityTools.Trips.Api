@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProductivityTools.Trips.Api.Db;
 
@@ -25,6 +25,14 @@ namespace ProductivityTools.Trips.Api.Controllers
         public List<ExpenseFullView> GetFullView(int tripId)
         {
             var r = this.TripContext.ExpensesFullView.Where(x => x.TripId == tripId).ToList();
+            return r;
+        }
+
+        /// <summary>All expenses of all trips (used by the reports page).</summary>
+        [HttpGet("GetAllFullView")]
+        public List<ExpenseFullView> GetAllFullView()
+        {
+            var r = this.TripContext.ExpensesFullView.ToList();
             return r;
         }
 
