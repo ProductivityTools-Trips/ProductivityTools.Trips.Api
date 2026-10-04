@@ -19,5 +19,7 @@ namespace ProductivityTools.Trips.Api.Db
         public decimal? Expensed { get; set; }
         public string? Description { get; set; }
         public string? TripType { get; set; }
+        /// <summary>Optional: Ski | CityBreak | Vacations | Festival | Spain (see TripCategories).</summary>
+        public string? TripCategory { get; set; }
     }
 }

@@ -18,5 +18,7 @@ namespace ProductivityTools.Trips.Api.Db
         public string? Learnings { get; set; }
         /// <summary>Family | Friends | Company (see TripTypes).</summary>
         public string TripType { get; set; } = TripTypes.Family;
+        /// <summary>Optional: Ski | CityBreak | Vacations | Festival | Spain (see TripCategories).</summary>
+        public string? TripCategory { get; set; }
     }
 }

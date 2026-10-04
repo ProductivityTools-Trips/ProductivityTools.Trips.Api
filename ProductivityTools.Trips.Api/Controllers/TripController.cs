@@ -56,6 +56,7 @@ namespace ProductivityTools.Trips.Api.Controllers
         public StatusCodeResult Add(Trip trip)
         {
             trip.TripType = TripTypes.Normalize(trip.TripType);
+            trip.TripCategory = TripCategories.Normalize(trip.TripCategory);
             TripContext.Trips.Add(trip);
             TripContext.SaveChanges();
             return Ok();
@@ -73,6 +74,7 @@ namespace ProductivityTools.Trips.Api.Controllers
             r.Nights=trip.Nights;
             r.Learnings = trip.Learnings;
             r.TripType = TripTypes.Normalize(trip.TripType);
+            r.TripCategory = TripCategories.Normalize(trip.TripCategory);
             TripContext.SaveChanges();
             return Ok();
         }
